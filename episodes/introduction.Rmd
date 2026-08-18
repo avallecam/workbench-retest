@@ -129,7 +129,22 @@ uk_pop <- population(
 uk_pop
 ```
 
-::::::::::::::::::::::::::::::::::::: keypoints 
+## Widgets
+
+You can also embed self-contained interactive HTML/JS widgets by reading
+them in and emitting them as raw markup:
+
+```{r renewal-widget, echo=FALSE, results='asis'}
+cat(readLines("files/renewal-slidestyle-widget.html", warn = FALSE), sep = "\n")
+```
+
+Here's another one, for a different worked example:
+
+```{r cfr-widget, echo=FALSE, results='asis'}
+cat(readLines("files/cfr-slidestyle-widget.html", warn = FALSE), sep = "\n")
+```
+
+::::::::::::::::::::::::::::::::::::: keypoints
 
 - Use `.md` files for episodes when you want static content
 - Use `.Rmd` files for episodes when you need to generate output
