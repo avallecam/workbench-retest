@@ -92,12 +92,13 @@
 <script>
 (function(){
   var c = [5,7,4,3];             // c_0..c_3, cases by onset day, matching the slide deck
-  var d = [1,1,1,1];             // deaths by day of death (daily incidence, one per day).
+  var d = [1,1,3,2];              // deaths by day of death (daily incidence, one per day).
                                   // NOTE: the source Rmd and slides only ever give the
                                   // *cumulative* D_t; showing deaths as a day-by-day
                                   // incidence series (mirroring the cases panel) is a
                                   // pedagogical addition for this widget, not from the source.
-                                  // It reproduces the source's D3=4, b3=4/19=0.21, p3=0.28.
+                                  // This is an illustrative synthetic series, not tied to
+                                  // the source's worked-example figures.
   var f = [0.2,0.4,0.3,0.1];     // f_0..f_3, matching the slide deck
   var F = []; f.reduce(function(acc,v,i){ F[i]=acc+v; return acc+v; }, 0);
   var cumC = []; c.reduce(function(acc,v,i){ cumC[i]=acc+v; return acc+v; }, 0);
