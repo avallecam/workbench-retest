@@ -272,7 +272,7 @@
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Using RMarkdown</h1>
-        <p>Last updated on 2026-08-18 |
+        <p>Last updated on 2026-08-20 |
 
         <a href="https://github.com/carpentries/workbench-template-rmd/edit/main/episodes/introduction.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -563,7 +563,7 @@ Generation time ω(s)
   #rsw-1 .unit.hi{ background:#e8828a; }
   #rsw-1 .unit.dim{ background:#ddd; }
   #rsw-1 .bar-col{ flex:1; display:flex; flex-direction:column; align-items:center; }
-  #rsw-1 .bar-col .fill{ width:78%; background:#555; border-radius:2px 2px 0 0; align-self:flex-end; }
+  #rsw-1 .bar-col .fill{ width:78%; background:#8a5a2b; border-radius:2px 2px 0 0; align-self:flex-end; }
   #rsw-1 .bar-col.hi .fill{ background:#e8828a; }
   #rsw-1 .bar-col .fv{ font-size:0.68em; color:#666; margin-top:3px; }
   #rsw-1 .rsw-notes{ margin-top:14px; min-height:22px; }
@@ -585,7 +585,7 @@ Generation time ω(s)
   [data-bs-theme="dark"] #rsw-1 .unit{ background:#999; }
   [data-bs-theme="dark"] #rsw-1 .unit.dim{ background:#444; }
   [data-bs-theme="dark"] #rsw-1 .unit.hi{ background:#e8828a; }
-  [data-bs-theme="dark"] #rsw-1 .bar-col .fill{ background:#999; }
+  [data-bs-theme="dark"] #rsw-1 .bar-col .fill{ background:#c99a6a; }
   [data-bs-theme="dark"] #rsw-1 .bar-col.hi .fill{ background:#e8828a; }
   [data-bs-theme="dark"] #rsw-1 .bar-col .fv{ color:#bbb; }
   [data-bs-theme="dark"] #rsw-1 .rsw-notes div{ color:#ff8c7f; }
@@ -601,7 +601,7 @@ Generation time ω(s)
   var maxI = Math.max.apply(null, I);
   var maxW = Math.max.apply(null, W);
 
-  var t = 5;
+  var t = 4;
   var step = 0; // 0 = nothing highlighted yet; step k highlights the k-th oldest active s
 
   var dayPick = document.getElementById("rsw1-daypick");
@@ -708,7 +708,7 @@ Generation time ω(s)
         var day = t - s;
         var prod = I[day-1]*W[s-1];
         sum += prod;
-        terms.push("I" + day + "\u00d7\u03c9" + s);
+        terms.push("I<sub>" + day + "</sub>\u00d7\u03c9(" + s + ")");
       });
       var Rt = I[t-1]/sum;
       resultEl.innerHTML = '<div class="box">Delay-adjusted R<sub>'+t+'</sub> = I<sub>'+t+'</sub> / (' + terms.join(' + ') + ') = ' + I[t-1] + ' / ' + fmt(sum) + ' = <b>' + fmt(Rt) + '</b></div>';
@@ -842,12 +842,13 @@ Deaths, by day of death
 </style><script>
 (function(){
   var c = [5,7,4,3];             // c_0..c_3, cases by onset day, matching the slide deck
-  var d = [1,1,1,1];             // deaths by day of death (daily incidence, one per day).
+  var d = [1,1,3,2];              // deaths by day of death (daily incidence, one per day).
                                   // NOTE: the source Rmd and slides only ever give the
                                   // *cumulative* D_t; showing deaths as a day-by-day
                                   // incidence series (mirroring the cases panel) is a
                                   // pedagogical addition for this widget, not from the source.
-                                  // It reproduces the source's D3=4, b3=4/19=0.21, p3=0.28.
+                                  // This is an illustrative synthetic series, not tied to
+                                  // the source's worked-example figures.
   var f = [0.2,0.4,0.3,0.1];     // f_0..f_3, matching the slide deck
   var F = []; f.reduce(function(acc,v,i){ F[i]=acc+v; return acc+v; }, 0);
   var cumC = []; c.reduce(function(acc,v,i){ cumC[i]=acc+v; return acc+v; }, 0);
@@ -855,7 +856,7 @@ Deaths, by day of death
   var maxC = Math.max.apply(null, c);
   var maxF = Math.max.apply(null, f);
 
-  var t = 3;
+  var t = 2;
   var step = 0;
 
   var dayPick = document.getElementById("csw1-daypick");
@@ -999,7 +1000,14 @@ Deaths, by day of death
 
   render();
 })();
-</script><div id="keypoints1" class="callout keypoints">
+</script><p>Because these files are pulled in with <code>readLines()</code>
+rather than parsed as lesson source, sandpaper’s build cache keys off
+this <code>.Rmd</code> file, not the HTML/JS file it reads. If you edit
+<code>renewal-slidestyle-widget.html</code> or
+<code>cfr-slidestyle-widget.html</code> and the preview doesn’t show
+your changes, run <code>sandpaper::reset_site()</code> before rebuilding
+to force a full re-render.</p>
+<div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
 </div>
@@ -1075,9 +1083,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://carpentries.github.io/workbench-template-rmd/instructor/introduction.html",
   "identifier": "https://carpentries.github.io/workbench-template-rmd/instructor/introduction.html",
-  "dateCreated": "2026-08-18",
-  "dateModified": "2026-08-18",
-  "datePublished": "2026-08-18"
+  "dateCreated": "2026-08-20",
+  "dateModified": "2026-08-20",
+  "datePublished": "2026-08-20"
 }
 
   </script><script>
