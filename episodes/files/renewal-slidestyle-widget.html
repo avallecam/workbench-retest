@@ -193,7 +193,7 @@
         var day = t - s;
         var prod = I[day-1]*W[s-1];
         sum += prod;
-        terms.push("I" + day + "\u00d7\u03c9" + s);
+        terms.push("I<sub>" + day + "</sub>\u00d7\u03c9(" + s + ")");
       });
       var Rt = I[t-1]/sum;
       resultEl.innerHTML = '<div class="box">Delay-adjusted R<sub>'+t+'</sub> = I<sub>'+t+'</sub> / (' + terms.join(' + ') + ') = ' + I[t-1] + ' / ' + fmt(sum) + ' = <b>' + fmt(Rt) + '</b></div>';
