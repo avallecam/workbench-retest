@@ -144,6 +144,12 @@ Here's another one, for a different worked example:
 cat(readLines("files/cfr-slidestyle-widget.html", warn = FALSE), sep = "\n")
 ```
 
+Because these files are pulled in with `readLines()` rather than parsed as
+lesson source, sandpaper's build cache keys off this `.Rmd` file, not the
+HTML/JS file it reads. If you edit `renewal-slidestyle-widget.html` or
+`cfr-slidestyle-widget.html` and the preview doesn't show your changes, run
+`sandpaper::reset_site()` before rebuilding to force a full re-render.
+
 ::::::::::::::::::::::::::::::::::::: keypoints
 
 - Use `.md` files for episodes when you want static content
